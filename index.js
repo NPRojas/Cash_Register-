@@ -64,101 +64,105 @@ function canMakeAmount(target) {
     };
 }
 
+function addPaidToRegister(paid) {
+  // converting paid into pennies 
+  let paidInPennies = paid * 100;
+  // adding paid to the register
+  while (paidInPennies != 0) {
+    if (paidInPennies >= 10000) {
+        addItem("hundred");
+        paidInPennies -= 10000;
+        console.log("100 added to the register");
+    } else if (paidInPennies >= 2000) {
+        addItem("twenty");
+        paidInPennies -= 2000;
+        console.log("20 added to the register");
+    } else if (paidInPennies >= 1000) {
+        addItem("ten");
+        paidInPennies -= 1000;
+        console.log("10 added to the register");
+    } else if (paidInPennies >= 500) {
+        addItem("five");
+        paidInPennies -= 500;
+        console.log("5 added to the register");
+    } else if (paidInPennies >= 100) {
+        addItem("one");
+        paidInPennies -= 100;
+        console.log("1 added to the register");
+    } else if (paidInPennies >= 25) {
+        addItem("quarter");            
+        paidInPennies -= 25;
+        console.log("25 cents added to the register");
+    } else if (paidInPennies >= 10) {
+        addItem("dime");
+        paidInPennies -= 10;
+        console.log("10 cents added to the register");
+    } else if (paidInPennies >= 5) {
+        addItem("nickel");
+        paidInPennies -= 5;
+        console.log("5 cents added to the register");
+    } else if (paidInPennies >= 1) {
+        addItem("penny");
+        paidInPennies -= 1;
+        console.log("1 cent added to the register");
+    } else {
+        console.log(`No more ${paidInPennies} left.`);
+    }
+  }
+}
 
+function giveCustomerChange(cost, paid) {
+  // calculate the change
+  const customerChange = paid - cost;
+  // convert customerChange to pennies
+  let customerChangeInPennies = customerChange * 100;
+  // remove change from the drawer
+  while (customerChangeInPennies != 0) {
+    if (customerChangeInPennies >= 10000) {
+        removeItem("hundred");
+        customerChangeInPennies -= 10000;
+        console.log("100 given to the guest");
+    } else if (customerChangeInPennies >= 2000) {
+        removeItem("twenty");
+        customerChangeInPennies -= 2000;
+        console.log("20 given to the guest");
+    } else if (customerChangeInPennies >= 1000) {
+        removeItem("ten");
+        customerChangeInPennies -= 1000;
+        console.log("10 given to the guest");
+    } else if (customerChangeInPennies >= 500) {
+        removeItem("five");
+        customerChangeInPennies -= 500;
+        console.log("5 given to the guest");
+    } else if (customerChangeInPennies >= 100) {
+        removeItem("one");
+        customerChangeInPennies -= 100;
+        console.log("1 given to the guest");
+    } else if (customerChangeInPennies >= 25) {
+        removeItem("quarter");
+        customerChangeInPennies -= 25;
+        console.log("25 cents given to the guest");
+    } else if (customerChangeInPennies >= 10) {
+        removeItem("dime");
+        customerChangeInPennies -= 10;
+        console.log("10 cents given to the guest");
+    } else if (customerChangeInPennies >= 5) {
+        removeItem("nickel");
+        customerChangeInPennies -= 5;
+        console.log("5 cents given to the guest");
+    } else if (customerChangeInPennies >= 1) {
+        removeItem("penny");
+        customerChangeInPennies -= 1;
+        console.log("1 cent given to the guest");
+    } else {
+        console.log(`No more ${customerChangeInPennies} left.`);
+    }
+  }
+}
 
 function calculateCustomerChange(cost, paid) {
-    // converting paid into pennies 
-    let paidInPennies = paid * 100;
-    // adding paid to the register
-    while (paidInPennies != 0) {
-      if (paidInPennies >= 10000) {
-          addItem("hundred");
-          paidInPennies -= 10000;
-          console.log("100 added to the register");
-      } else if (paidInPennies >= 2000) {
-          addItem("twenty");
-          paidInPennies -= 2000;
-          console.log("20 added to the register");
-      } else if (paidInPennies >= 1000) {
-          addItem("ten");
-          paidInPennies -= 1000;
-          console.log("10 added to the register");
-      } else if (paidInPennies >= 500) {
-          addItem("five");
-          paidInPennies -= 500;
-          console.log("5 added to the register");
-      } else if (paidInPennies >= 100) {
-          addItem("one");
-          paidInPennies -= 100;
-          console.log("1 added to the register");
-      } else if (paidInPennies >= 25) {
-          addItem("quarter");            
-          paidInPennies -= 25;
-          console.log("25 cents added to the register");
-      } else if (paidInPennies >= 10) {
-          addItem("dime");
-          paidInPennies -= 10;
-          console.log("10 cents added to the register");
-      } else if (paidInPennies >= 5) {
-          addItem("nickel");
-          paidInPennies -= 5;
-          console.log("5 cents added to the register");
-      } else if (paidInPennies >= 1) {
-          addItem("penny");
-          paidInPennies -= 1;
-          console.log("1 cent added to the register");
-      } else {
-          console.log(`No more ${paidInPennies} left.`);
-      }
-  }
-
-    // calculate the change
-    const customerChange = paid - cost;
-    // convert customerChange to pennies
-    let customerChangeInPennies = customerChange * 100;
-    // remove change from the drawer
-    while (customerChangeInPennies != 0) {
-      if (customerChangeInPennies >= 10000) {
-          removeItem("hundred");
-          customerChangeInPennies -= 10000;
-          console.log("100 given to the guest");
-      } else if (customerChangeInPennies >= 2000) {
-          removeItem("twenty");
-          customerChangeInPennies -= 2000;
-          console.log("20 given to the guest");
-      } else if (customerChangeInPennies >= 1000) {
-          removeItem("ten");
-          customerChangeInPennies -= 1000;
-          console.log("10 given to the guest");
-      } else if (customerChangeInPennies >= 500) {
-          removeItem("five");
-          customerChangeInPennies -= 500;
-          console.log("5 given to the guest");
-      } else if (customerChangeInPennies >= 100) {
-          removeItem("one");
-          customerChangeInPennies -= 100;
-          console.log("1 given to the guest");
-      } else if (customerChangeInPennies >= 25) {
-          removeItem("quarter");
-          customerChangeInPennies -= 25;
-          console.log("25 cents given to the guest");
-      } else if (customerChangeInPennies >= 10) {
-          removeItem("dime");
-          customerChangeInPennies -= 10;
-          console.log("10 cents given to the guest");
-      } else if (customerChangeInPennies >= 5) {
-          removeItem("nickel");
-          customerChangeInPennies -= 5;
-          console.log("5 cents given to the guest");
-      } else if (customerChangeInPennies >= 1) {
-          removeItem("penny");
-          customerChangeInPennies -= 1;
-          console.log("1 cent given to the guest");
-      } else {
-          console.log(`No more ${customerChangeInPennies} left.`);
-      }
-    }
-
+    addPaidToRegister(paid);
+    giveCustomerChange(cost, paid);
     // returns the new amount in the drawer
     return drawer;
 }
