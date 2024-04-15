@@ -47,10 +47,13 @@ function countBills() {
 }
 
 function sumDrawer() {
-    let totalSum = 0;
-    const quantiesInDrawer = drawer.map(item => item.quantity); 
-    quantiesInDrawer.forEach(num => totalSum += num);
-    return totalSum;
+    let pennySum = 0;
+    // mutiply the number of coins by it's values
+    const quantiesInDrawer = drawer.map(item => item.quantity * item.value); 
+    quantiesInDrawer.forEach(num => pennySum += num);
+    // convert pennies to dollars 
+    dollarSum = pennySum/100;
+    return dollarSum;
 }
 
 function canMakeAmount(target) {
